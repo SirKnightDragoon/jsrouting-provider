@@ -4,12 +4,12 @@ namespace rootLogin\JSRoutingProvider\Provider;
 
 use rootLogin\JSRoutingProvider\Command\DumpJSCommand;
 use rootLogin\JSRoutingProvider\Command\DumpRouterCommand;
-use Silex\Application;
-use Silex\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 class SilexJSRoutingServiceProvider implements ServiceProviderInterface
 {
-    public function register(Application $app)
+    public function register(Container $app)
     {
         foreach ($this->getDefaults() as $key => $value) {
             if (!isset($app[$key])) {
@@ -20,7 +20,7 @@ class SilexJSRoutingServiceProvider implements ServiceProviderInterface
         $app->mount($app['jsrouting.base_url'], new SilexJSRoutingControllerProvider());
     }
 
-    public function boot(Application $app)
+    public function boot(Container $app)
     {
         if(isset($app['console'])) {
             $console = $app['console'];
