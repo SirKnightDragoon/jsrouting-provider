@@ -29,6 +29,5 @@
   "suggests": {
     "twig/twig": ">=1.8",
     "twig/extensions": "~1.0"
-  },
-  "minimum-stability": "stable"
+  }
 }
